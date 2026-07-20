@@ -407,10 +407,22 @@ class HybridSecurityCA:
         
         # Gráfico 2: Alarmes ao longo do tempo
         ax2 = fig.add_subplot(gs[0, 2])
-        ax2.bar(self.history['time'][1:], self.history['alarms_triggered'][1:], 
-               color='#e74c3c', alpha=0.7, label='Alarmes Verdadeiros')
-        ax2.bar(self.history['time'][1:], self.history['false_alarms'][1:], 
-               color='#f39c12', alpha=0.7, label='Falsos Alarmes')
+        
+        # CORRIGIDO: Garantir que os arrays tenham o mesmo tamanho
+        times = self.history['time'][1:]
+        alarms = self.history['alarms_triggered'][1:]
+        falses = self.history['false_alarms'][1:]
+        
+        # Ajustar para o mesmo comprimento
+        min_len = min(len(times), len(alarms), len(falses))
+        times = times[:min_len]
+        alarms = alarms[:min_len]
+        falses = falses[:min_len]
+        
+        if len(times) > 0:
+            ax2.bar(times, alarms, color='#e74c3c', alpha=0.7, label='Alarmes Verdadeiros')
+            ax2.bar(times, falses, color='#f39c12', alpha=0.7, label='Falsos Alarmes', bottom=alarms)
+        
         ax2.set_xlabel('Passo Temporal', fontsize=12)
         ax2.set_ylabel('Número de Alarmes', fontsize=12)
         ax2.set_title('Sistema de Alarmes', fontsize=14, fontweight='bold')
