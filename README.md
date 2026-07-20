@@ -1,17 +1,27 @@
-# Digital Epidemic Propagation in Social Networks
+# 🛡️ Sistema Híbrido de Detecção e Contenção de Ameaças em Rede
 
-A Cellular Automata approach to modeling digital epidemic spread through network structures.
+Autômato Celular com Consenso Distribuído e Agentes de Defesa para Segurança de Redes
 
-## Overview
+## 📖 Sobre o Projeto
 
-This project implements a 2D cellular automaton that simulates how digital phenomena (misinformation, malware, viral content) propagate through networks. The model uses an SIR (Susceptible-Infected-Recovered) framework adapted for spatial network structures.
+Este projeto implementa um sistema híbrido de segurança de redes usando autômatos celulares. O modelo combina:
 
-## Features
+- 🔍 **Detecção por sensores** com sistema de votação distribuída
+- 🛡️ **Firewalls móveis** que perseguem e contêm ameaças
+- 💉 **Aplicação de patches** para imunizar nós comprometidos
+- 🗳️ **Consenso entre vizinhos** para reduzir falsos positivos
 
-- 2D cellular automaton with customizable grid size
-- SIR epidemiological model adapted for digital propagation
-- Support for both Moore (8-neighbor) and von Neumann (4-neighbor) neighborhoods
-- Real-time visualization and epidemic curve plotting
-- Configurable transmission (β) and recovery (γ) rates
-- Statistical analysis of epidemic dynamics
-- Animation capabilities for dynamic visualization
+### Estados das Células
+
+| Estado | Cor | Significado |
+|--------|-----|-------------|
+| 0 | 🟢 Verde | Normal (saudável, vulnerável) |
+| 1 | 🔴 Vermelho | Infectado (propagando malware) |
+| 2 | 🟡 Amarelo | Sob Suspeita (sensor detectou anomalia) |
+| 3 | ⚫ Cinza | Em Quarentena (isolado por firewall) |
+| 4 | 🔵 Azul | Vacinado (patch aplicado, imune) |
+
+## 🚀 Instalação
+
+```bash
+pip install -r requirements.txt
